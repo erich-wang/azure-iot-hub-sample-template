@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureIoTHubSampleVsix", "AzureIoTHubSampleVsix\AzureIoTHubSampleVsix.csproj", "{7D27DEAD-3ABE-4F7E-8F86-D675DAB4BB09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureIoTHubSampleTemplate", "AzureIoTHubSampleTemplate\AzureIoTHubSampleTemplate.csproj", "{DFFEB76D-7F44-4200-ADB0-409BD96F559B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D27DEAD-3ABE-4F7E-8F86-D675DAB4BB09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D27DEAD-3ABE-4F7E-8F86-D675DAB4BB09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D27DEAD-3ABE-4F7E-8F86-D675DAB4BB09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D27DEAD-3ABE-4F7E-8F86-D675DAB4BB09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFFEB76D-7F44-4200-ADB0-409BD96F559B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFFEB76D-7F44-4200-ADB0-409BD96F559B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFFEB76D-7F44-4200-ADB0-409BD96F559B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFFEB76D-7F44-4200-ADB0-409BD96F559B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
