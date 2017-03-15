@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,6 +7,22 @@ namespace $safeprojectname$
     public class Program
     {
         public static void Main(string[] args)
+        {
+            //Sample 1: Create device if you didn't have one in Azure IoT Hub, FIRST YOU NEED SPECIFY connectionString first in AzureIoTHub.cs
+            CreateDeviceIdentity();
+
+            //Sample 2: comment above line and uncomment following line, FIRST YOU NEED SPECIFY connectingString and deviceConnectionString in AzureIoTHub.cs
+            //SimulateDeviceToSendD2CAndReceiveD2C();
+        }
+
+        public static void CreateDeviceIdentity()
+        {
+            string deviceName = "myFirstDevice";
+            AzureIoTHub.CreateDeviceIdentityAsync(deviceName).Wait();
+            Console.WriteLine($"Device with name '{deviceName}' was created/retrieved successfully");
+        }
+
+        private static void SimulateDeviceToSendD2CAndReceiveD2C()
         {
             CancellationTokenSource tokenSource = new CancellationTokenSource();
 

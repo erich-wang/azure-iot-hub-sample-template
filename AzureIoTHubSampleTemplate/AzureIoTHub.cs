@@ -1,4 +1,5 @@
 using Microsoft.Azure.Devices.Client;
+using Microsoft.Azure.Devices.Common.Exceptions;
 using Microsoft.ServiceBus.Messaging;
 using Newtonsoft.Json;
 using System;
@@ -6,24 +7,40 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Devices = Microsoft.Azure.Devices;
 
 namespace $safeprojectname$
 {
     public static class AzureIoTHub
     {
         /// <summary>
-        /// Please replace with correct device connection string
-        /// The device connect string could be got from Azure IoT Hub -> Devices -> {your device name } -> Connection string
-        /// </summary>
-        private const string deviceConnectionString = "HostName=$iotHubUri$;DeviceId=$deviceId$;SharedAccessKey=$deviceKey$";
-
-        /// <summary>
         /// Please replace with correct connection string value
         /// The connection string could be got from Azure IoT Hub -> Shared access policies -> iothubowner -> Connection String:
         /// </summary>
         private const string connectionString = "HostName=$iotHubUri$;SharedAccessKeyName=$accessKeyName$;SharedAccessKey=$accessKey$";
 
+        /// <summary>
+        /// Please replace with correct device connection string
+        /// The device connect string could be got from Azure IoT Hub -> Devices -> {your device name } -> Connection string
+        /// </summary>
+        private const string deviceConnectionString = "HostName=$iotHubUri$;DeviceId=$deviceId$;SharedAccessKey=$deviceKey$";
+
         private const string iotHubD2cEndpoint = "messages/events";
+
+        public static async Task<string> CreateDeviceIdentityAsync(string deviceName)
+        {
+            var registryManager = Devices.RegistryManager.CreateFromConnectionString(connectionString);
+            Devices.Device device;
+            try
+            {
+                device = await registryManager.AddDeviceAsync(new Devices.Device(deviceName));
+            }
+            catch (DeviceAlreadyExistsException)
+            {
+                device = await registryManager.GetDeviceAsync(deviceName);
+            }
+            return device.Authentication.SymmetricKey.PrimaryKey;
+        }
 
         public static async Task SendDeviceToCloudMessageAsync(CancellationToken cancelToken)
         {
