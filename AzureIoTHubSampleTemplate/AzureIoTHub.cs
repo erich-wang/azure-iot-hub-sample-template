@@ -17,18 +17,24 @@ namespace $safeprojectname$
         /// Please replace with correct connection string value
         /// The connection string could be got from Azure IoT Hub -> Shared access policies -> iothubowner -> Connection String:
         /// </summary>
-        private const string connectionString = "HostName=$iotHubUri$;SharedAccessKeyName=$accessKeyName$;SharedAccessKey=$accessKey$";
+        private const string connectionString = "$ioTHubConnectionString$";
 
         /// <summary>
         /// Please replace with correct device connection string
         /// The device connect string could be got from Azure IoT Hub -> Devices -> {your device name } -> Connection string
         /// </summary>
-        private const string deviceConnectionString = "HostName=$iotHubUri$;DeviceId=$deviceId$;SharedAccessKey=$deviceKey$";
-
+        private const string deviceConnectionString = "$deviceConnectionString$";
         private const string iotHubD2cEndpoint = "messages/events";
 
         public static async Task<string> CreateDeviceIdentityAsync(string deviceName)
         {
+            if (connectionString.Equals("HostName=$iotHubUri$;SharedAccessKeyName=$accessKeyName$;SharedAccessKey=$accessKey$"))
+            {
+                Console.WriteLine("Please provide correct IoT connection string.\nPlease refer https://marketplace.visualstudio.com/items?itemName=ErichWangMSFT.AzureIoTHubSampleofDeviceSimulation");
+                Console.ReadLine();
+                return null;
+            }
+
             var registryManager = Devices.RegistryManager.CreateFromConnectionString(connectionString);
             Devices.Device device;
             try
@@ -44,6 +50,14 @@ namespace $safeprojectname$
 
         public static async Task SendDeviceToCloudMessageAsync(CancellationToken cancelToken)
         {
+
+            if (deviceConnectionString.Equals("HostName=$iotHubUri$;DeviceId=$deviceId$;SharedAccessKey=$deviceKey$"))
+            {
+                Console.WriteLine("Please provide correct Device connection string.\nPlease refer https://marketplace.visualstudio.com/items?itemName=ErichWangMSFT.AzureIoTHubSampleofDeviceSimulation");
+                Console.ReadLine();
+                return;
+            }
+
             var deviceClient = DeviceClient.CreateFromConnectionString(deviceConnectionString);
 
             double avgWindSpeed = 10; // m/s

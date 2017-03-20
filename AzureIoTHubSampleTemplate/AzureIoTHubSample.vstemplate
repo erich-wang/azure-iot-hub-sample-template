@@ -20,4 +20,8 @@
       <ProjectItem ReplaceParameters="true" OpenInEditor="true">AzureIoTHub.cs</ProjectItem>
     </Project>
   </TemplateContent>
+  <WizardExtension>
+    <Assembly>AzureIoTHubSampleVsix, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=505e9b067e60c3f0</Assembly>
+    <FullClassName>AzureIoTHubSampleVsix.ConnectionStringWizard</FullClassName>
+  </WizardExtension>
 </VSTemplate>

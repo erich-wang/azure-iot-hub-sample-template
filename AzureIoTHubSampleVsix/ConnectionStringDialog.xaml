@@ -1,0 +1,32 @@
+﻿<platformUi:DialogWindow x:Class="AzureIoTHubSampleVsix.ConnectionStringDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
+             Title="Azure IoT Connection String" Height="300" Width="300" ResizeMode="NoResize">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Label  Content="IoT Hub Connection String" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <TextBox Name="IoTHubConnectionString" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10" TextWrapping="Wrap"/>
+        <Label  Content="Device Connection String" Grid.Row="2"  Grid.ColumnSpan="2"/>
+        <TextBox Grid.Row="3" Name="DeviceConnectionString" Grid.ColumnSpan="2"  Margin="0,10" TextWrapping="Wrap"/>
+        <TextBlock Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Right" FontSize="10" Margin="0,5">
+               <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://marketplace.visualstudio.com/items?itemName=ErichWangMSFT.AzureIoTHubSampleofDeviceSimulation" >How to find connection string?</Hyperlink>
+        </TextBlock>
+        <Button Grid.Row="5"  Content="OK" Margin="0,0,10,0" Width="100" HorizontalAlignment="Left" Click="Button_Click_OK"/>
+        <Button Grid.Row="5" Grid.Column="2" Content="Skip" Margin="10,0,0,0" Width="100" HorizontalAlignment="Right" IsCancel="True"/>
+    </Grid>
+</platformUi:DialogWindow>
+
