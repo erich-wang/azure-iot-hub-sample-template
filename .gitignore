@@ -110,7 +110,7 @@ ClientBin/
 *~
 *.dbmdl
 *.[Pp]ublish.xml
-*.pfx
+
 *.publishsettings
 *.jar
 
